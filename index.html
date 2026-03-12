@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yusuke Soeda - Portfolio</title>
+    <style>
+        /* 全体のデザイン設定 */
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            line-height: 1.6;
+            background-color: #f4f7f6;
+        }
+        /* ヘッダー周り */
+        header {
+            background-color: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 4rem 1rem;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 2.8rem;
+            letter-spacing: 2px;
+        }
+        header p {
+            margin-top: 0.5rem;
+            font-size: 1.2rem;
+            color: #bdc3c7;
+        }
+        /* コンテンツ領域 */
+        .container {
+            max-width: 900px;
+            margin: -2rem auto 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+        section {
+            margin-bottom: 3rem;
+        }
+        h2 {
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 0.5rem;
+            color: #2c3e50;
+            font-size: 1.8rem;
+        }
+        /* プロジェクトのグリッド配置 */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .card {
+            background: #fdfdfd;
+            padding: 1.5rem;
+            border-radius: 8px;
+            border: 1px solid #eee;
+            transition: transform 0.2s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        .card h3 {
+            margin-top: 0;
+            color: #3498db;
+        }
+        /* スキルタグ */
+        .tag {
+            display: inline-block;
+            background: #e2e8f0;
+            color: #4a5568;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+        /* フッター */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #7f8c8d;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>添田 悠介</h1>
+        <p>デバイス開発エンジニア / 大学院生 (材料工学)</p>
+    </header>
+
+    <div class="container">
+        <section id="about">
+            <h2>About Me</h2>
+            <p>
+                東京理科大学大学院にて材料工学を専攻しつつ、個人事業主としてデバイス開発を行っています。
+                ハードウェアの設計・制御から、Pythonを用いたデータ解析、GUI開発まで、ゼロから複雑なシステムを構築することを得意としています。
+            </p>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <div>
+                <span class="tag">Python</span>
+                <span class="tag">C / C++</span>
+                <span class="tag">PySide6</span>
+                <span class="tag">Fusion 360</span>
+                <span class="tag">Blender</span>
+                <span class="tag">ハードウェア制御</span>
+                <span class="tag">データ解析</span>
+            </div>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <div class="grid">
+                <div class="card">
+                    <h3>自動化顕微鏡システム</h3>
+                    <p>YOLOを用いた画像認識技術と組み合わせた、カスタム自動顕微鏡の開発。ハードウェアの制御からソフトウェアの実装までを一貫して構築。</p>
+                </div>
+                <div class="card">
+                    <h3>熱拡散率測定用プローブの開発</h3>
+                    <p>曲率制御型熱プローブの開発と評価（TWA法）。材料特性の高度な測定手法の確立に取り組む。</p>
+                </div>
+                <div class="card">
+                    <h3>ロボット開発・競技参加</h3>
+                    <p>ROBO-ONEなどに向けた自律型ロボット開発。CNCフライス（PSF240）や3Dプリンタを利用した部品加工からシステム統合まで実施。</p>
+                </div>
+                <div class="card">
+                    <h3>Bioactive Terrarium</h3>
+                    <p>コケや微生物が循環する自立型テラリウム・アクアリウムの制作。自然環境を模倣した環境構築。</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Yusuke Soeda. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
