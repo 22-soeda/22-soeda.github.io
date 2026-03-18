@@ -1,0 +1,142 @@
+@charset "UTF-8";
+
+/* =========================================
+   CSS変数によるテーマ設定（RPG酒場風に修正）
+========================================= */
+
+/* 1. モダンテーマ（デフォルト）: クリーン＆鮮やかな青 (変更なし) */
+:root {
+    --bg-main: #f0fdfa;       /* 背景色: ミントホワイト */
+    --text-main: #0f172a;     /* 文字色: 濃いネイビー */
+    --card-bg: #ffffff;       /* カード背景: 白 */
+    --border-color: #007bff;  /* 枠線色: 鮮やかなエレクトリックブルー */
+    --border-width: 2px;
+    --border-radius: 1rem;
+    --shadow-base: 0 10px 15px -3px rgba(0, 123, 255, 0.15); /* 青みがかった影 */
+    --shadow-hover: 0 20px 25px -5px rgba(0, 123, 255, 0.25);
+    --transform-hover: translateY(-6px);
+    --font-base: ui-sans-serif, system-ui, sans-serif;
+    
+    /* アクセントカラー */
+    --badge-bg: #007bff;      /* 鮮やかなエレクトリックブルー */
+    --badge-text: #ffffff;
+    --title-border: #007bff;  /* 鮮やかな青の下線 */
+    --header-bg: rgba(255, 255, 255, 0.9);
+    --btn-bg: #ff4500;        /* 鮮やかなオレンジレッド */
+    --btn-text: #ffffff;
+}
+
+/* 2. レトロテーマ起動時: RPG酒場風（木の温かさ、羊皮紙、古びた金） */
+body.theme-retro {
+    --bg-main: #3e2723;       /* 背景色: 深い焦げ茶（木の板壁壁の色） */
+    --text-main: #f1e0ac;     /* 文字色: くすんだクリーム色（羊皮紙、松明の明かりの色） */
+    --card-bg: #2b1d0e;       /* カード背景: さらに濃い焦げ茶（ウィンドウ内、薄暗い店内） */
+    --border-color: #c4a77d;  /* 枠線色: くすんだ金（古びた金具の色） */
+    --border-width: 8px;      /* 枠線: さらに太く、木の柱や枠を強調 */
+    --border-radius: 0px;
+    --shadow-base: 12px 12px 0px 0px #1a1a1a; /* 影: 深い影 */
+    --shadow-hover: 6px 6px 0px 0px #1a1a1a;
+    --transform-hover: translate(6px, 6px);
+    --font-base: 'DotGothic16', sans-serif;
+    
+    /* アクセントカラー: RPGのステータスやアイテムをイメージ */
+    --badge-bg: #b22222;      /* バッジ背景: 赤（HP、火） */
+    --badge-text: #fdfdfd;
+    --title-border: #c4a77d;  /* 見出し下線: くすんだ金 */
+    --header-bg: #3e2723;
+    --btn-bg: #795548;        /* ボタン: 茶色（木製ボタン） */
+    --btn-text: #f1e0ac;
+}
+
+/* スキルバッジの個別色設定（レトロモード用、RPGのアイテム欄風） */
+body.theme-retro #skills .custom-badge {
+    background-color: var(--badge-bg); /* デフォルト赤 */
+}
+body.theme-retro #skills .custom-badge:nth-child(2) {
+    background-color: #4caf50; /* 緑（薬草、毒） */
+}
+body.theme-retro #skills .custom-badge:nth-child(3) {
+    background-color: #2196f3; /* 青（魔力、水） */
+}
+body.theme-retro #skills .custom-badge:nth-child(4n) {
+    background-color: #ffeb3b; /* 金色（ゴールド、特殊アイテム） */
+    color: #000; /* 文字色を黒に */
+}
+
+/* =========================================
+   カスタムクラス
+========================================= */
+
+html { 
+    scroll-behavior: smooth; 
+    scroll-padding-top: 5rem;
+}
+
+body {
+    background-color: var(--bg-main);
+    color: var(--text-main);
+    font-family: var(--font-base);
+    transition: background-color 0.4s, color 0.4s;
+}
+
+/* 画像の切り替えロジック */
+.img-retro { display: none; }
+body.theme-retro .img-modern { display: none; }
+body.theme-retro .img-retro { display: block; }
+
+/* 共通パーツデザイン */
+.custom-header {
+    background-color: var(--header-bg);
+    border-bottom: var(--border-width) solid var(--border-color);
+    backdrop-filter: blur(8px);
+    transition: background-color 0.4s;
+}
+
+.custom-card {
+    background-color: var(--card-bg);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow-base);
+    transition: all 0.2s ease-in-out;
+}
+.custom-card.is-hoverable:hover {
+    box-shadow: var(--shadow-hover);
+    transform: var(--transform-hover);
+}
+
+.custom-border-b { border-bottom: var(--border-width) solid var(--border-color); }
+
+.custom-badge {
+    background-color: var(--badge-bg);
+    color: var(--badge-text);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: calc(var(--border-radius) / 2);
+    padding: 0.3rem 1.2rem;
+    font-weight: bold;
+    font-size: 0.9rem;
+    box-shadow: var(--shadow-base);
+    letter-spacing: 0.05em;
+}
+
+.custom-title {
+    border-bottom: calc(var(--border-width) * 2) solid var(--title-border);
+    padding-bottom: 0.5rem;
+    display: inline-block;
+}
+
+.custom-btn {
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 9999px;
+    box-shadow: var(--shadow-base);
+    transition: all 0.2s;
+    cursor: pointer;
+}
+body.theme-retro .custom-btn {
+    border-radius: 0;
+}
+.custom-btn:active {
+    box-shadow: var(--shadow-hover);
+    transform: var(--transform-hover);
+}

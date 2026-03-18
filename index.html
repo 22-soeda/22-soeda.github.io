@@ -4,148 +4,167 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Yusuke Soeda - Portfolio</title>
-    <style>
-        /* 全体のデザイン設定 */
-        body {
-            font-family: 'Helvetica Neue', Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            color: #333;
-            line-height: 1.6;
-            background-color: #f4f7f6;
-        }
-        /* ヘッダー周り */
-        header {
-            background-color: #2c3e50;
-            color: white;
-            text-align: center;
-            padding: 4rem 1rem;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.8rem;
-            letter-spacing: 2px;
-        }
-        header p {
-            margin-top: 0.5rem;
-            font-size: 1.2rem;
-            color: #bdc3c7;
-        }
-        /* コンテンツ領域 */
-        .container {
-            max-width: 900px;
-            margin: -2rem auto 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 8px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-        }
-        section {
-            margin-bottom: 3rem;
-        }
-        h2 {
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 0.5rem;
-            color: #2c3e50;
-            font-size: 1.8rem;
-        }
-        /* プロジェクトのグリッド配置 */
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-        }
-        .card {
-            background: #fdfdfd;
-            padding: 1.5rem;
-            border-radius: 8px;
-            border: 1px solid #eee;
-            transition: transform 0.2s ease;
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .card h3 {
-            margin-top: 0;
-            color: #3498db;
-        }
-        /* スキルタグ */
-        .tag {
-            display: inline-block;
-            background: #e2e8f0;
-            color: #4a5568;
-            padding: 0.3rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin-right: 0.5rem;
-            margin-bottom: 0.5rem;
-            font-weight: bold;
-        }
-        /* フッター */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            color: #7f8c8d;
-            font-size: 0.9rem;
-        }
-    </style>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body class="antialiased leading-relaxed">
 
-    <header>
-        <h1>添田 悠介</h1>
-        <p>デバイス開発エンジニア / 大学院生 (材料工学)</p>
+    <button id="theme-toggle-btn" class="custom-btn fixed bottom-6 right-6 z-50 px-6 py-3 font-bold tracking-wider flex items-center gap-2">
+        <span id="btn-icon">🎮</span> <span id="btn-text">レトロモード</span>
+    </button>
+
+    <header class="sticky top-0 z-40 custom-header">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
+            <div class="font-bold text-xl md:text-2xl tracking-widest">YUSUKE SOEDA</div>
+            <nav class="space-x-4 md:space-x-8 text-sm md:text-base font-bold">
+                <a href="#about" class="hover:opacity-60 transition-opacity">ABOUT</a>
+                <a href="#skills" class="hover:opacity-60 transition-opacity">SKILLS</a>
+                <a href="#history" class="hover:opacity-60 transition-opacity">HISTORY</a>
+                <a href="#projects" class="hover:opacity-60 transition-opacity">PROJECTS</a>
+            </nav>
+        </div>
     </header>
 
-    <div class="container">
+    <main class="max-w-5xl mx-auto px-6 py-16 space-y-24">
+
         <section id="about">
-            <h2>About Me</h2>
-            <p>
-                東京理科大学大学院にて材料工学を専攻しつつ、個人事業主としてデバイス開発を行っています。
-                ハードウェアの設計・制御から、Pythonを用いたデータ解析、GUI開発まで、ゼロから複雑なシステムを構築することを得意としています。
-            </p>
+            <h2 class="text-2xl font-bold custom-title mb-8">ABOUT ME</h2>
+            <div class="custom-card p-8 flex flex-col md:flex-row gap-8 items-center md:items-start">
+                <div class="w-40 md:w-56 aspect-[3/4] flex-shrink-0 overflow-hidden bg-white" style="border-radius: var(--border-radius); border: var(--border-width) solid var(--border-color);">
+                    <img src="fig/home/profile-modern.jpg" alt="プロフィール画像" class="img-modern w-full h-full object-cover">
+                    <img src="fig/home/profile-retro.png" alt="ドット絵プロフィール" class="img-retro w-full h-full object-cover">
+                </div>
+                <div>
+                    <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-widest">添田 悠介</h1>
+                    <p class="opacity-90 mb-6 font-bold text-lg">デバイス開発エンジニア / 大学院生 (材料工学)</p>
+                    <p class="leading-loose text-lg font-medium">
+                        東京理科大学大学院にて材料工学を専攻しつつ、個人事業主としてデバイス開発を行っています。<br>
+                        ハードウェアの設計・制御から、Pythonを用いたデータ解析、GUI開発まで、ゼロから複雑なシステムを構築することを得意としています。
+                    </p>
+                </div>
+            </div>
         </section>
 
         <section id="skills">
-            <h2>Skills</h2>
-            <div>
-                <span class="tag">Python</span>
-                <span class="tag">C / C++</span>
-                <span class="tag">PySide6</span>
-                <span class="tag">Fusion 360</span>
-                <span class="tag">Blender</span>
-                <span class="tag">ハードウェア制御</span>
-                <span class="tag">データ解析</span>
+            <h2 class="text-2xl font-bold custom-title mb-6">SKILLS</h2>
+            <div class="flex flex-wrap gap-4">
+                <span class="custom-badge">Python</span>
+                <span class="custom-badge">C / C++</span>
+                <span class="custom-badge">PySide6</span>
+                <span class="custom-badge">Fusion 360</span>
+                <span class="custom-badge">Blender</span>
+                <span class="custom-badge">ハードウェア制御</span>
+                <span class="custom-badge">データ解析</span>
+            </div>
+        </section>
+
+        <section id="history">
+            <h2 class="text-2xl font-bold custom-title mb-6">HISTORY</h2>
+            <div class="custom-card p-8 space-y-6">
+                <div class="flex flex-col md:flex-row gap-2 md:gap-8 border-b border-gray-300 pb-4 last:border-0 last:pb-0 font-medium">
+                    <div class="font-bold opacity-80 whitespace-nowrap w-32">2026年 4月</div>
+                    <div class="leading-relaxed">東京理科大学大学院 へ進学</div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-2 md:gap-8 border-b border-gray-300 pb-4 last:border-0 last:pb-0 font-medium">
+                    <div class="font-bold opacity-80 whitespace-nowrap w-32">2026年 3月</div>
+                    <div class="leading-relaxed">個人事業主として開業。<br>本格的なデバイス開発の受託やアシスタント業務の契約管理を開始。</div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-2 md:gap-8 border-b border-gray-300 pb-4 last:border-0 last:pb-0 font-medium">
+                    <div class="font-bold opacity-80 whitespace-nowrap w-32">2026年 2月</div>
+                    <div class="leading-relaxed">東京理科大学 材料工学科 森川研究室にて卒業論文執筆。<br>「曲率制御型熱プローブを用いた熱拡散率測定（TWA法）」の研究に従事。</div>
+                </div>
+                <div class="flex flex-col md:flex-row gap-2 md:gap-8 border-b border-gray-300 pb-4 last:border-0 last:pb-0 font-medium">
+                    <div class="font-bold opacity-80 whitespace-nowrap w-32">xxxx年 4月</div>
+                    <div class="leading-relaxed">東京理科大学（旧東京工業大学） 入学</div>
+                </div>
             </div>
         </section>
 
         <section id="projects">
-            <h2>Projects</h2>
-            <div class="grid">
-                <div class="card">
-                    <h3>自動化顕微鏡システム</h3>
-                    <p>YOLOを用いた画像認識技術と組み合わせた、カスタム自動顕微鏡の開発。ハードウェアの制御からソフトウェアの実装までを一貫して構築。</p>
-                </div>
-                <div class="card">
-                    <h3>熱拡散率測定用プローブの開発</h3>
-                    <p>曲率制御型熱プローブの開発と評価（TWA法）。材料特性の高度な測定手法の確立に取り組む。</p>
-                </div>
-                <div class="card">
-                    <h3>ロボット開発・競技参加</h3>
-                    <p>ROBO-ONEなどに向けた自律型ロボット開発。CNCフライス（PSF240）や3Dプリンタを利用した部品加工からシステム統合まで実施。</p>
-                </div>
-                <div class="card">
-                    <h3>Bioactive Terrarium</h3>
-                    <p>コケや微生物が循環する自立型テラリウム・アクアリウムの制作。自然環境を模倣した環境構築。</p>
-                </div>
+            <h2 class="text-2xl font-bold custom-title mb-8">PROJECTS</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                
+                <a href="project.html" class="custom-card is-hoverable cursor-pointer flex flex-col overflow-hidden block">
+                    <div class="aspect-[4/3] custom-border-b relative bg-white">
+                        <img src="fig/home/microscope-modern.jpg" class="img-modern w-full h-full object-cover">
+                        <img src="fig/home/microscope-retro.png" class="img-retro w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">自動化顕微鏡システム</h3>
+                        <p class="opacity-90 leading-relaxed text-sm font-medium">YOLOを用いた画像認識技術と組み合わせた、カスタム自動顕微鏡の開発。ハードウェア制御からGUI実装まで構築。</p>
+                    </div>
+                </a>
+
+                <a href="project.html" class="custom-card is-hoverable cursor-pointer flex flex-col overflow-hidden block">
+                    <div class="aspect-[4/3] custom-border-b relative bg-white">
+                        <img src="fig/home/probe-modern.jpg" class="img-modern w-full h-full object-cover">
+                        <img src="fig/home/probe-retro.png" class="img-retro w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">熱拡散率測定用プローブ</h3>
+                        <p class="opacity-90 leading-relaxed text-sm font-medium">曲率制御型熱プローブの開発と評価（TWA法）。mr-DWL等の材料を用い、高度な測定手法の確立に取り組む。</p>
+                    </div>
+                </a>
+
+                <a href="project.html" class="custom-card is-hoverable cursor-pointer flex flex-col overflow-hidden block">
+                    <div class="aspect-[4/3] custom-border-b relative bg-white">
+                        <img src="fig/home/robot-modern.jpg" class="img-modern w-full h-full object-cover">
+                        <img src="fig/home/robot-retro.png" class="img-retro w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">ロボット開発・競技参加</h3>
+                        <p class="opacity-90 leading-relaxed text-sm font-medium">ROBO-ONEなどに向けた自律型ロボット開発。CNCフライス（PSF240）や3Dプリンタを利用した部品加工を実施。</p>
+                    </div>
+                </a>
+
+                <a href="project.html" class="custom-card is-hoverable cursor-pointer flex flex-col overflow-hidden block">
+                    <div class="aspect-[4/3] custom-border-b relative bg-white">
+                        <img src="fig/home/terrarium-modern.jpg" class="img-modern w-full h-full object-cover">
+                        <img src="fig/home/terrarium-retro.png" class="img-retro w-full h-full object-cover">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold mb-3">Bioactive Terrarium</h3>
+                        <p class="opacity-90 leading-relaxed text-sm font-medium">コケや微生物、等脚類が循環する自立型テラリウム・アクアリウムの制作。自然環境を模倣した環境構築。</p>
+                    </div>
+                </a>
+
             </div>
         </section>
-    </div>
 
-    <footer>
-        <p>&copy; 2026 Yusuke Soeda. All Rights Reserved.</p>
+    </main>
+
+    <footer class="text-center py-8 opacity-80 font-bold tracking-widest border-t-2" style="border-color: var(--border-color);">
+        <p class="text-sm">&copy; YUSUKE SOEDA. ALL RIGHTS RESERVED.</p>
     </footer>
+
+    <script>
+        const body = document.body;
+        const toggleBtn = document.getElementById('theme-toggle-btn');
+        const btnIcon = document.getElementById('btn-icon');
+        const btnText = document.getElementById('btn-text');
+
+        // ページ読み込み時に保存されたテーマを復元
+        if (localStorage.getItem('portfolioTheme') === 'retro') {
+            body.classList.add('theme-retro');
+            btnIcon.textContent = '✨';
+            btnText.textContent = 'モダンモード';
+        }
+
+        toggleBtn.addEventListener('click', () => {
+            body.classList.toggle('theme-retro');
+            
+            if (body.classList.contains('theme-retro')) {
+                btnIcon.textContent = '✨';
+                btnText.textContent = 'モダンモード';
+                localStorage.setItem('portfolioTheme', 'retro'); // レトロ状態を記憶
+            } else {
+                btnIcon.textContent = '🎮';
+                btnText.textContent = 'レトロモード';
+                localStorage.setItem('portfolioTheme', 'modern'); // モダン状態を記憶
+            }
+        });
+    </script>
 
 </body>
 </html>
