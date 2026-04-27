@@ -1,0 +1,44 @@
+{
+  "projects": [
+    {
+      "slug": "microscope",
+      "title": "自動化顕微鏡システム",
+      "summary": "YOLOを用いた画像認識技術と組み合わせた、カスタム自動顕微鏡の開発。ハードウェア制御からGUI実装まで構築。",
+      "thumbModern": "fig/home/microscope-modern.jpg",
+      "thumbRetro": "fig/home/microscope-retro.png",
+      "href": "project.html"
+    },
+    {
+      "slug": "xroboocon",
+      "title": "大阪・関西万博「XROBOOCON」チームリーダー",
+      "summary": "大阪・関西万博のロボット競技イベント XROBOOCON においてチームリーダーとして参画。チーム運営と技術方針の統括に従事。",
+      "thumbModern": "fig/home/XROBOCON_all.jpg",
+      "thumbRetro": "fig/home/dot_mechanekko.png",
+      "href": "project.html"
+    },
+    {
+      "slug": "makaizo-kickscooter",
+      "title": "魔改造の夜「キックスケーター 25m 綱渡り」出場",
+      "summary": "「魔改造の夜」にて、キックスケーターを25m綱渡り競技向けに改造し出場。機構・電装の設計と実機調整に取り組む。",
+      "thumbModern": "fig/home/makaizo.jpg",
+      "thumbRetro": "",
+      "href": "project.html"
+    },
+    {
+      "slug": "robot",
+      "title": "二足歩行ロボット大会「ROBO-ONE」への出場",
+      "summary": "二足歩行ロボットの競技大会 ROBO-ONE に出場。メカニズムの設計・製作や競技会場での調整などに取り組む。",
+      "thumbModern": "fig/home/ROBOONE_modern.jpg",
+      "thumbRetro": "fig/home/ROBOONE_retro.png",
+      "href": "project.html"
+    },
+    {
+      "slug": "terrarium",
+      "title": "Bioactive Terrarium",
+      "summary": "コケや微生物、等脚類が循環する自立型テラリウム・アクアリウムの制作。自然環境を模倣した環境構築。",
+      "thumbModern": "fig/home/terrarium-modern.jpg",
+      "thumbRetro": "fig/home/terrarium-retro.png",
+      "href": "project.html"
+    }
+  ]
+}
