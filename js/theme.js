@@ -4,27 +4,25 @@
     var toggleBtn = document.getElementById('theme-toggle-btn');
     var btnIcon = document.getElementById('btn-icon');
     var btnText = document.getElementById('btn-text');
+    var isRetro;
 
-    if (localStorage.getItem('portfolioTheme') === 'retro') {
-      body.classList.add('theme-retro');
-      if (btnIcon) btnIcon.textContent = '✨';
-      if (btnText) btnText.textContent = 'モダンモード';
+    function updateToggleLabel(retroMode) {
+      if (btnIcon) btnIcon.textContent = retroMode ? '✨' : '🎮';
+      if (btnText) btnText.textContent = retroMode ? 'モダンモード' : 'レトロモード';
     }
 
-    if (!toggleBtn || !btnIcon || !btnText) return;
+    isRetro = localStorage.getItem('portfolioTheme') === 'retro';
+    body.classList.toggle('theme-retro', isRetro);
+    updateToggleLabel(isRetro);
+
+    if (!toggleBtn) return;
 
     toggleBtn.addEventListener('click', function () {
       body.classList.toggle('theme-retro');
+      isRetro = body.classList.contains('theme-retro');
 
-      if (body.classList.contains('theme-retro')) {
-        btnIcon.textContent = '✨';
-        btnText.textContent = 'モダンモード';
-        localStorage.setItem('portfolioTheme', 'retro');
-      } else {
-        btnIcon.textContent = '🎮';
-        btnText.textContent = 'レトロモード';
-        localStorage.setItem('portfolioTheme', 'modern');
-      }
+      updateToggleLabel(isRetro);
+      localStorage.setItem('portfolioTheme', isRetro ? 'retro' : 'modern');
     });
   }
 
