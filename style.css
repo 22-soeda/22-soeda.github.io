@@ -145,3 +145,22 @@ body.theme-retro .custom-btn {
     box-shadow: var(--shadow-hover);
     transform: var(--transform-hover);
 }
+
+/* 訪問者カウンタ（Moe Counter SVG） */
+#visitor-counter {
+    min-height: 0;
+    line-height: 1;
+}
+
+.visitor-counter-img {
+    height: 40px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+body.theme-retro .visitor-counter-img {
+    image-rendering: pixelated;
+    image-rendering: crisp-edges;
+}

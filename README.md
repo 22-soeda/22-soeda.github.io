@@ -72,3 +72,12 @@ python -m http.server 8000
 
 - Tailwind CSS は CDN 読み込み（`<script src="https://cdn.tailwindcss.com"></script>`）を使用しています。
 - テーマ状態は `localStorage`（`portfolioTheme`）に保存されます。
+
+## 訪問者カウンタ
+
+フッターの訪問者表示は [Moe Counter](https://github.com/journey-ad/Moe-Counter) の公開インスタンス `https://count.getloli.com` を利用しています。
+
+- カウンタの識別子は `index.html` 内の `data-counter-url`（`@22-soeda-portfolio`）で一意に決まります。別サイトと分けたい場合は `@` 以降の文字列を変更してください。
+- モダン / レトロテーマに応じて `?theme=` の見た目を切り替えています（`js/theme.js` の `setVisitorCounterTheme`）。
+- ページ表示のたびにカウントが増える「閲覧回数（ヒット）」型です。ユニーク訪問者数ではありません。
+- 公開インスタンスは無料・無保証のため、停止した場合は [Moe Counter の README](https://github.com/journey-ad/Moe-Counter) に従い Cloudflare Workers 等で自前ホストした URL を `data-counter-url` に差し替える運用が可能です。

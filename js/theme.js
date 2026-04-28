@@ -1,4 +1,15 @@
 (function () {
+  function initVisitorCounterSrc(retroMode) {
+    var img = document.getElementById('visitor-counter-img');
+    if (!img) return;
+    if (img.getAttribute('src')) return;
+    var base = img.getAttribute('data-counter-url');
+    if (!base) return;
+    var theme = retroMode ? img.dataset.themeRetro : img.dataset.themeModern;
+    if (!theme) return;
+    img.src = base + '?theme=' + encodeURIComponent(theme);
+  }
+
   function initPortfolioTheme() {
     var body = document.body;
     var toggleBtn = document.getElementById('theme-toggle-btn');
@@ -14,6 +25,7 @@
     isRetro = localStorage.getItem('portfolioTheme') === 'retro';
     body.classList.toggle('theme-retro', isRetro);
     updateToggleLabel(isRetro);
+    initVisitorCounterSrc(isRetro);
 
     if (!toggleBtn) return;
 

@@ -6,7 +6,7 @@
     <title>Yusuke Soeda - Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="style.css?v=20260427-2310">
+    <link rel="stylesheet" href="style.css?v=20260428-1200">
 </head>
 <body class="antialiased leading-relaxed">
 
@@ -15,8 +15,22 @@
     </button>
 
     <header class="sticky top-0 z-40 custom-header">
-        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center">
-            <div class="font-bold text-xl md:text-2xl tracking-widest">YUSUKE SOEDA</div>
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+            <div class="flex items-center gap-4 md:gap-6">
+                <div class="font-bold text-xl md:text-2xl tracking-widest whitespace-nowrap">YUSUKE SOEDA</div>
+                <div id="visitor-counter" class="hidden sm:flex flex-col items-start gap-1">
+                    <span class="text-[10px] tracking-widest">VISITORS</span>
+                    <img id="visitor-counter-img"
+                         class="visitor-counter-img"
+                         data-counter-url="https://count.getloli.com/@22-soeda-portfolio"
+                         data-theme-modern="rule34"
+                         data-theme-retro="rule34"
+                         alt="訪問者カウンタ"
+                         width="120"
+                         height="32"
+                         decoding="async">
+                </div>
+            </div>
             <nav class="space-x-4 md:space-x-8 text-sm md:text-base font-bold">
                 <a href="#about" class="hover:opacity-60 transition-opacity">ABOUT</a>
                 <a href="#skills" class="hover:opacity-60 transition-opacity">SKILLS</a>
