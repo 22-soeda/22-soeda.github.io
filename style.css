@@ -164,3 +164,60 @@ body.theme-retro .visitor-counter-img {
     image-rendering: pixelated;
     image-rendering: crisp-edges;
 }
+
+/* プロフィール画像の隠しゲーム導線 */
+.profile-secret-box {
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-slide-layer {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: grab;
+    transition: transform 0.22s ease-out;
+    will-change: transform;
+}
+
+.profile-slide-layer img {
+    pointer-events: none;
+    -webkit-user-drag: none;
+}
+
+.profile-slide-layer.is-dragging {
+    cursor: grabbing;
+    transition: none;
+}
+
+.secret-game-btn {
+    position: absolute;
+    left: 50%;
+    bottom: 0.35rem;
+    transform: translateX(-50%);
+    z-index: 1;
+    width: 3.4rem;
+    height: 3.4rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: var(--border-width) solid var(--border-color);
+    border-radius: 9999px;
+    background-color: var(--btn-bg);
+    color: var(--btn-text);
+    font-size: 1.7rem;
+    font-weight: 700;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.18s ease-in-out;
+    box-shadow: var(--shadow-base);
+    text-decoration: none;
+}
+
+.secret-game-btn.is-revealed {
+    opacity: 1;
+    pointer-events: auto;
+}

@@ -45,9 +45,14 @@
         <section id="about">
             <h2 class="text-2xl font-bold custom-title mb-8">ABOUT ME</h2>
             <div class="custom-card p-8 flex flex-col md:flex-row gap-8 items-center md:items-start">
-                <div class="w-40 md:w-56 aspect-[3/4] flex-shrink-0 overflow-hidden bg-white" style="border-radius: var(--border-radius); border: var(--border-width) solid var(--border-color);">
-                    <img src="fig/home/profile-modern.jpg" alt="プロフィール画像" class="img-modern w-full h-full object-cover">
-                    <img src="fig/home/profile-retro.png" alt="ドット絵プロフィール" class="img-retro w-full h-full object-cover">
+                <div class="profile-secret-box w-40 md:w-56 aspect-[3/4] flex-shrink-0" id="profile-secret-box">
+                    <a href="game.html" class="secret-game-btn" id="secret-game-btn" aria-label="隠しゲームを開始">
+                        <span aria-hidden="true">🛸</span>
+                    </a>
+                    <div class="profile-slide-layer overflow-hidden bg-white" id="profile-slide-layer" style="border-radius: var(--border-radius); border: var(--border-width) solid var(--border-color);">
+                        <img src="fig/home/profile-modern.jpg" alt="プロフィール画像" class="img-modern w-full h-full object-cover" draggable="false">
+                        <img src="fig/home/profile-retro.png" alt="ドット絵プロフィール" class="img-retro w-full h-full object-cover" draggable="false">
+                    </div>
                 </div>
                 <div>
                     <h1 class="text-3xl md:text-4xl font-extrabold mb-3 tracking-widest">添田 悠介</h1>
@@ -108,6 +113,7 @@
 
     <script src="js/theme.js" defer></script>
     <script src="js/projects.js" defer></script>
+    <script src="js/secret-game-trigger.js" defer></script>
 
 </body>
 </html>
