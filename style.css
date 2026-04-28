@@ -84,6 +84,11 @@ body {
 body.theme-retro .img-modern { display: none; }
 body.theme-retro .img-retro { display: block; }
 
+/* ドット絵未設定のカード: レトロモードでもモダン画像を表示 */
+body.theme-retro .thumb-retro-pending .img-modern {
+    display: block !important;
+}
+
 /* 共通パーツデザイン */
 .custom-header {
     background-color: var(--header-bg);
