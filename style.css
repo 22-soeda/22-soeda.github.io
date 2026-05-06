@@ -24,6 +24,23 @@
     --header-bg: rgba(255, 255, 255, 0.9);
     --btn-bg: #ff4500;        /* 鮮やかなオレンジレッド */
     --btn-text: #ffffff;
+
+    /* コード: VS Code Dark+ / bash ターミナル風（モダン・レトロ共通のエディタ調） */
+    --vsc-editor-bg: #1e1e1e;
+    --vsc-editor-fg: #d4d4d4;
+    --vsc-titlebar-bg: #252526;
+    --vsc-titlebar-fg: #cccccc;
+    --vsc-border-outer: #3c3c3c;
+    --vsc-accent-left: #3794ff;
+    --vsc-terminal-prompt: #23d18b;
+    --vsc-terminal-fg: #cccccc;
+    --vsc-keyword: #569cd6;
+    --vsc-string: #ce9178;
+    --vsc-panel-shadow: 0 10px 28px rgba(0, 0, 0, 0.42), inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    /* 本文中インライン code（黒背景は使わず淡色のみ。黒背景はコードブロックのみ） */
+    --prose-inline-code-bg: rgba(15, 23, 42, 0.06);
+    --prose-inline-code-border: rgba(15, 23, 42, 0.13);
 }
 
 /* 2. レトロテーマ起動時: ダークグレー + くっきりアクセント */
@@ -46,6 +63,13 @@ body.theme-retro {
     --header-bg: rgba(209, 213, 219, 0.95);
     --btn-bg: #22d3ee;        /* シアン */
     --btn-text: #0f172a;
+
+    /* レトロ時もコード枠は同系を維持（カードとのコントラストで浮く） */
+    --vsc-editor-bg: #181818;
+    --vsc-titlebar-bg: #202020;
+
+    --prose-inline-code-bg: rgba(17, 24, 39, 0.09);
+    --prose-inline-code-border: rgba(51, 65, 85, 0.28);
 }
 
 /* スキルバッジの個別色設定（レトロモード用、はっきり配色） */
@@ -220,4 +244,127 @@ body.theme-retro .visitor-counter-img {
 .secret-game-btn.is-revealed {
     opacity: 1;
     pointer-events: auto;
+}
+
+/* =========================================
+   コード表示（サイト共通・テーマ変数に追従）
+========================================= */
+
+/* 等幅はドットフォントを継承しない（可読性のため） */
+pre.code-block,
+pre.code-block code {
+    font-family: ui-monospace, "Cascadia Mono", "Cascadia Code", "Segoe UI Mono",
+        "Ubuntu Mono", "Noto Sans Mono", Menlo, Consolas, monospace;
+}
+
+figure.code-sample {
+    margin: 0;
+    overflow: hidden;
+    border-radius: calc(var(--border-radius) * 0.7);
+    border: 1px solid var(--vsc-border-outer);
+    box-shadow: var(--vsc-panel-shadow);
+}
+
+.code-sample-label {
+    font-family: ui-monospace, "Cascadia Mono", "Cascadia Code", "Segoe UI Mono", Menlo,
+        Consolas, monospace;
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    line-height: 1.4;
+    margin: 0;
+    padding: 0.42rem 1rem;
+    box-sizing: border-box;
+    color: var(--vsc-titlebar-fg);
+    background: linear-gradient(180deg, #2d2d2d 0%, var(--vsc-titlebar-bg) 100%);
+    border-bottom: 1px solid #1b1b1b;
+    box-shadow: inset 0 -1px 0 rgba(55, 148, 255, 0.35);
+}
+
+.code-sample[data-lang="bash"] .code-sample-label {
+    color: var(--vsc-terminal-prompt);
+    text-shadow: 0 0 12px rgba(35, 209, 139, 0.25);
+}
+
+.code-sample[data-lang="yaml"] .code-sample-label {
+    color: var(--vsc-string);
+}
+
+.code-sample[data-lang="powershell"] .code-sample-label {
+    color: var(--vsc-keyword);
+}
+
+pre.code-block {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 1rem 1.15rem;
+    font-size: 0.8125rem;
+    line-height: 1.65;
+    tab-size: 4;
+    -moz-tab-size: 4;
+    color: var(--vsc-editor-fg);
+    background-color: var(--vsc-editor-bg);
+    border: none;
+    border-left: 3px solid var(--vsc-accent-left);
+    border-radius: 0;
+    box-shadow: none;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
+/* Highlight.js 適用後: テーマの背景・着色を優先し、枠だけ pre が持つ */
+pre.code-block:has(code.hljs) {
+    background-color: transparent;
+    padding: 0;
+    color: unset;
+}
+
+pre.code-block code.hljs {
+    border-radius: 0 !important;
+    margin: 0;
+    padding: 1rem 1.15rem !important;
+    font-weight: 400;
+}
+
+.code-sample[data-lang="bash"] pre.code-block code:not(.hljs) {
+    color: var(--vsc-terminal-fg);
+}
+
+pre.code-block code:not(.hljs) {
+    display: block;
+    padding: 0;
+    margin: 0;
+    font-size: inherit;
+    font-weight: 500;
+    line-height: inherit;
+    color: inherit;
+    background: none;
+    border: none;
+    border-radius: 0;
+    white-space: pre;
+    word-break: normal;
+    overflow-wrap: normal;
+}
+
+/* 本文中インライン code（暗い背景はコードブロックのみ） */
+article .code-inline {
+    font-family: ui-monospace, "Cascadia Mono", "Segoe UI Mono", Menlo, Consolas, monospace;
+    font-size: 0.9em;
+    font-weight: 600;
+    padding: 0.12em 0.45em;
+    color: var(--text-main);
+    background-color: var(--prose-inline-code-bg);
+    border: 1px solid var(--prose-inline-code-border);
+    border-radius: calc(var(--border-radius) / 4);
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    max-width: 100%;
+    vertical-align: baseline;
 }

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi 5（Ubuntu 24.04）Wi-Fi自動接続設定（複数AP） - Yusuke Soeda</title>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../style.css?v=20260506-inline">
+</head>
+<body class="antialiased leading-relaxed min-h-screen flex flex-col">
+
+    <button id="theme-toggle-btn" class="custom-btn fixed bottom-6 right-6 z-50 px-5 py-3 font-bold tracking-wider flex items-center justify-center">
+        <span id="btn-icon">🎮</span>
+    </button>
+
+    <header class="sticky top-0 z-40 custom-header">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+            <div class="font-bold text-xl md:text-2xl tracking-widest">
+                <a href="../index.html" class="hover:opacity-60 transition-opacity">YUSUKE SOEDA</a>
+            </div>
+            <nav class="font-bold text-sm md:text-base">
+                <a href="../index.html#memos" class="hover:opacity-60 transition-opacity flex items-center gap-2">
+                    <span>←</span> 備忘録一覧へ
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-16">
+        <article class="custom-card p-8 md:p-10">
+            <p class="text-sm font-bold opacity-70 tracking-widest mb-2">備忘録</p>
+            <p class="text-sm font-medium opacity-80 mb-5">執筆日: <time datetime="2026-05-06">2026年5月6日</time></p>
+            <h1 class="text-2xl md:text-3xl font-bold custom-title mb-8 tracking-wide">Raspberry Pi 5（Ubuntu 24.04）Wi-Fi自動接続設定（複数AP）</h1>
+
+            <div class="space-y-10 text-lg font-medium leading-loose opacity-95">
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">前提</h2>
+                    <p>
+                        SSH でラズパイへログイン済みの状態で操作する。本ページは <a href="./raspberry-pi5-ubuntu-ssh-key-auth.html" class="underline hover:opacity-70 transition-opacity">このページ</a> の続きとして、Netplan で複数の Wi-Fi アクセスポイントを登録し、自動接続できるようにする手順をまとめる。
+                    </p>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">1. Wi-Fi設定ファイルの作成・編集</h2>
+                    <p class="text-base opacity-90">
+                        これまでと同様に Netplan の設定ファイルを開く。ファイル名は任意だが、ここでは <code class="code-inline">99-wifi.yaml</code> とする。
+                    </p>
+                    <figure class="code-sample" data-lang="bash">
+                        <figcaption class="code-sample-label">bash</figcaption>
+                        <pre class="code-block"><code class="language-bash">sudo nano /etc/netplan/99-wifi.yaml</code></pre>
+                    </figure>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">2. 複数のアクセスポイントを記述する</h2>
+                    <p class="text-base opacity-90">
+                        <code class="code-inline">access-points:</code> の下に、接続したい SSID とパスワードを追加する。インデント（スペース数）を崩さないよう注意する。
+                    </p>
+                    <figure class="code-sample" data-lang="yaml">
+                        <figcaption class="code-sample-label">yaml</figcaption>
+                        <pre class="code-block"><code class="language-yaml">network:
+  version: 2
+  wifis:
+    wlan0:
+      dhcp4: true
+      access-points:
+        "自宅のSSID":
+          password: "自宅のパスワード"
+        "大学のSSID":
+          password: "大学のパスワード"
+        "スマホのテザリングSSID":
+          password: "テザリングのパスワード"</code></pre>
+                    </figure>
+                    <p class="text-base opacity-90">
+                        <strong class="font-bold">ポイント1</strong>: SSID やパスワードにスペースや特殊文字が含まれる場合があるため、値はダブルクォーテーションで囲むことを推奨。
+                    </p>
+                    <p class="text-base opacity-90">
+                        <strong class="font-bold">ポイント2</strong>: 基本的には上から順番で固定接続するのではなく、利用可能な中で電波状態の良い AP に自動接続される。
+                    </p>
+                    <p class="text-base opacity-90">
+                        記述後は <code class="code-inline">Ctrl + O</code> → <code class="code-inline">Enter</code> で保存し、<code class="code-inline">Ctrl + X</code> で終了する。
+                    </p>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">3. 権限の変更（初回のみ）</h2>
+                    <p class="text-base opacity-90">
+                        Wi-Fi パスワードを含むため、設定ファイルの権限を厳格にする。これにより <code class="code-inline">Permissions are too open</code> 警告も回避できる。
+                    </p>
+                    <figure class="code-sample" data-lang="bash">
+                        <figcaption class="code-sample-label">bash</figcaption>
+                        <pre class="code-block"><code class="language-bash">sudo chmod 600 /etc/netplan/99-wifi.yaml</code></pre>
+                    </figure>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">4. 設定の適用</h2>
+                    <p class="text-base opacity-90">
+                        Netplan 設定をシステムへ反映する。
+                    </p>
+                    <figure class="code-sample" data-lang="bash">
+                        <figcaption class="code-sample-label">bash</figcaption>
+                        <pre class="code-block"><code class="language-bash">sudo netplan apply</code></pre>
+                    </figure>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">5. 接続の確認</h2>
+                    <p class="text-base opacity-90">
+                        数秒〜十数秒待ってから、インターネット接続を確認する。
+                    </p>
+                    <figure class="code-sample" data-lang="bash">
+                        <figcaption class="code-sample-label">bash</figcaption>
+                        <pre class="code-block"><code class="language-bash">ping -c 4 google.com</code></pre>
+                    </figure>
+                    <p class="text-base opacity-90">
+                        応答が返ってくれば成功。あわせて <code class="code-inline">ip a</code> で <code class="code-inline">wlan0</code> に IP アドレスが割り当てられていることも確認できる。
+                    </p>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer class="text-center py-8 opacity-80 font-bold tracking-widest border-t-2" style="border-color: var(--border-color);">
+        <p class="text-sm">&copy; YUSUKE SOEDA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
+        }
+    </script>
+    <script src="../js/theme.js" defer></script>
+
+</body>
+</html>

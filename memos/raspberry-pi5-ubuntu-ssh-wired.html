@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Raspberry Pi 5（Ubuntu 24.04 Server）有線LANでのSSH接続設定 - Yusuke Soeda</title>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../style.css?v=20260506-inline">
+</head>
+<body class="antialiased leading-relaxed min-h-screen flex flex-col">
+
+    <button id="theme-toggle-btn" class="custom-btn fixed bottom-6 right-6 z-50 px-5 py-3 font-bold tracking-wider flex items-center justify-center">
+        <span id="btn-icon">🎮</span>
+    </button>
+
+    <header class="sticky top-0 z-40 custom-header">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+            <div class="font-bold text-xl md:text-2xl tracking-widest">
+                <a href="../index.html" class="hover:opacity-60 transition-opacity">YUSUKE SOEDA</a>
+            </div>
+            <nav class="font-bold text-sm md:text-base">
+                <a href="../index.html#memos" class="hover:opacity-60 transition-opacity flex items-center gap-2">
+                    <span>←</span> 備忘録一覧へ
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-16">
+        <article class="custom-card p-8 md:p-10">
+            <p class="text-sm font-bold opacity-70 tracking-widest mb-2">備忘録</p>
+            <p class="text-sm font-medium opacity-80 mb-5">執筆日: <time datetime="2026-05-06">2026年5月6日</time></p>
+            <h1 class="text-2xl md:text-3xl font-bold custom-title mb-8 tracking-wide">Raspberry Pi 5（Ubuntu 24.04 Server）有線LANでのSSH接続設定</h1>
+
+            <div class="space-y-10 text-lg font-medium leading-loose opacity-95">
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">概要</h2>
+                    <p>
+                        <strong class="font-bold">ROBO-ONE Auto</strong> に向けて、<strong class="font-bold">Raspberry Pi 5</strong> 上で <strong class="font-bold">ROS 2</strong> の開発環境を整えることを目指している。その一環として、初期セットアップ後はモニター・キーボードレスで作業できるよう、PC と Raspberry Pi を有線 LAN（1 対 1）で接続し、固定 IP による SSH 通信を確立する手順をまとめる。
+                    </p>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">1. OS の書き込みと起動後のローカル操作</h2>
+                    <p>
+                        以降の <code class="code-inline">Netplan</code> や <code class="code-inline">SSH</code> の操作は、次の状態でラズパイに直接ログインして行う前提とする。
+                    </p>
+                    <ol class="list-decimal pl-6 space-y-3 text-base">
+                        <li>
+                            PC 上で <strong class="font-bold">Raspberry Pi Imager</strong> を起動し、使用する OS イメージ（本備忘録では Ubuntu 24.04 Server を想定）を <strong class="font-bold">SD カード</strong>に書き込む。ストレージの選択や初期設定（ユーザー名・パスワード等）もここで指定する。
+                        </li>
+                        <li>
+                            書き込みが完了した SD カードを <strong class="font-bold">Raspberry Pi 5</strong> に挿入し、電源を入れて起動する。初回起動時の設定や更新があれば、画面の指示に従う。
+                        </li>
+                        <li>
+                            <strong class="font-bold">ディスプレイ</strong>をラズパイに接続し、ローカルで <strong class="font-bold">ターミナル</strong>を開いて操作する（キーボードも接続する）。次節以降のコマンドは、このローカル端末上で実行する。
+                        </li>
+                    </ol>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">2. ラズパイ側のネットワーク設定（固定 IP 化）</h2>
+                    <p>
+                        Ubuntu 24.04 の標準ネットワーク管理ツール <code class="code-inline">Netplan</code> を使用し、有線 LAN（<code class="code-inline">eth0</code> など）を固定 IP 化する。
+                    </p>
+
+                    <h3 class="text-lg font-bold mt-6 mb-2">2-1. インターフェース名と IP 状態の確認</h3>
+                    <figure class="code-sample" data-lang="bash">
+                        <figcaption class="code-sample-label">bash</figcaption>
+                        <pre class="code-block"><code class="language-bash">ip a</code></pre>
+                    </figure>
+                    <p class="text-base opacity-90">
+                        有線 LAN のインターフェース名が <code class="code-inline">eth0</code> または <code class="code-inline">end0</code> であるか確認する。実機に合わせて後述の Netplan のキーを置き換える。
+                    </p>
+
+                    <h3 class="text-lg font-bold mt-6 mb-2">2-2. Netplan 設定ファイルの作成</h3>
+                    <figure class="code-sample" data-lang="bash">
+                        <figcaption class="code-sample-label">bash</figcaption>
+                        <pre class="code-block"><code class="language-bash">sudo nano /etc/netplan/99-wired.yaml</code></pre>
+                    </figure>
+                    <p class="text-base opacity-90">記述例（インデントはスペースを使用すること）。</p>
+                    <figure class="code-sample" data-lang="yaml">
+                        <figcaption class="code-sample-label">yaml</figcaption>
+                        <pre class="code-block"><code class="language-yaml">network:
+  version: 2
+  ethernets:
+    eth0:
+      dhcp4: false
+      addresses:
+        - 192.168.100.10/24</code></pre>
+                    </figure>
+
+                    <h3 class="text-lg font-bold mt-6 mb-2">2-3. 権限の変更と設定の適用</h3>
+                    <p class="text-base opacity-90">
+                        Netplan 設定ファイルはセキュリティ上、他のユーザーから見えないように権限を絞る（忘れると <code class="code-inline">apply</code> 時に <code class="code-inline">Permissions ... are too open</code> と警告が出る）。
+                    </p>
+                    <figure class="code-sample" data-lang="bash">
+                        <figcaption class="code-sample-label">bash</figcaption>
+                        <pre class="code-block"><code class="language-bash"># 権限を「所有者(root)のみ読み書き可能」に変更
+sudo chmod 600 /etc/netplan/99-wired.yaml
+
+# ネットワーク設定をシステムに適用
+sudo netplan apply</code></pre>
+                    </figure>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">3. ラズパイ側の SSH サービス有効化</h2>
+                    <p>
+                        Ubuntu Server の初期状態では SSH サービス（受付窓口）が起動していない場合があるため、有効化する。
+                    </p>
+                    <figure class="code-sample" data-lang="bash">
+                        <figcaption class="code-sample-label">bash</figcaption>
+                        <pre class="code-block"><code class="language-bash"># SSH サービスの状態確認
+sudo systemctl status ssh
+
+# SSH サービスを起動し、自動起動も有効化
+sudo systemctl enable --now ssh</code></pre>
+                    </figure>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">4. Windows PC 側のネットワーク設定</h2>
+                    <p>
+                        USB-C to LAN 変換アダプタ等を介して PC とラズパイを LAN ケーブルで直接つなぎ、PC 側も同じネットワーク帯の固定 IP に変更する。
+                    </p>
+                    <p class="text-base opacity-90">
+                        「ネットワークとインターネット」→「イーサネット」（またはアダプタのプロパティ）を開き、IPv4 の割り当てを「手動」に変更する。
+                    </p>
+                    <ul class="list-disc pl-6 space-y-2 text-base">
+                        <li>IP アドレス: <strong class="font-bold">192.168.100.11</strong>（ラズパイの 10 と被らない値）</li>
+                        <li>サブネットマスク: <strong class="font-bold">255.255.255.0</strong></li>
+                        <li>デフォルトゲートウェイ / DNS: 空欄でよい</li>
+                    </ul>
+                    <p class="text-base opacity-90">
+                        通信確認を行う場合は、PowerShell から <code class="code-inline">ping 192.168.100.10</code> を実行する。
+                    </p>
+                </section>
+
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">5. SSH での接続</h2>
+                    <p>
+                        PC の PowerShell（またはターミナル）から、ラズパイのユーザー名と IP アドレスを指定して接続する。
+                    </p>
+                    <figure class="code-sample" data-lang="powershell">
+                        <figcaption class="code-sample-label">powershell</figcaption>
+                        <pre class="code-block"><code class="language-bash">ssh auto@192.168.100.10</code></pre>
+                    </figure>
+                    <p class="text-base opacity-90">
+                        初回接続時は <code class="code-inline">Are you sure you want to continue connecting (yes/no/[fingerprint])?</code> と聞かれるので <code class="code-inline">yes</code> と入力する。その後、ラズパイのパスワードを入力してログイン完了。
+                    </p>
+                </section>
+
+            </div>
+        </article>
+    </main>
+
+    <footer class="text-center py-8 opacity-80 font-bold tracking-widest border-t-2" style="border-color: var(--border-color);">
+        <p class="text-sm">&copy; YUSUKE SOEDA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
+        }
+    </script>
+    <script src="../js/theme.js" defer></script>
+
+</body>
+</html>

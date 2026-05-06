@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 置き換え: ブラウザタブ・検索結果用の短文タイトル（末尾はサイト名と揃える） -->
+    <title>（記事タイトル） - Yusuke Soeda</title>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- コードブロックのシンタックスハイライトが不要なら、この2行と body 末尾の hljs の script を削除する（README 参照） -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
+
+    <!-- 変更時は ?v= の値を更新してキャッシュを避ける -->
+    <link rel="stylesheet" href="../style.css?v=memo-template">
+</head>
+<body class="antialiased leading-relaxed min-h-screen flex flex-col">
+
+    <button id="theme-toggle-btn" class="custom-btn fixed bottom-6 right-6 z-50 px-5 py-3 font-bold tracking-wider flex items-center justify-center">
+        <span id="btn-icon">🎮</span>
+    </button>
+
+    <header class="sticky top-0 z-40 custom-header">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+            <div class="font-bold text-xl md:text-2xl tracking-widest">
+                <a href="../index.html" class="hover:opacity-60 transition-opacity">YUSUKE SOEDA</a>
+            </div>
+            <nav class="font-bold text-sm md:text-base">
+                <a href="../index.html#memos" class="hover:opacity-60 transition-opacity flex items-center gap-2">
+                    <span>←</span> 備忘録一覧へ
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-16">
+        <article class="custom-card p-8 md:p-10">
+            <p class="text-sm font-bold opacity-70 tracking-widest mb-2">備忘録</p>
+            <!-- 置き換え: 執筆日 datetime は YYYY-MM-DD -->
+            <p class="text-sm font-medium opacity-80 mb-5">執筆日: <time datetime="YYYY-MM-DD">YYYY年M月D日</time></p>
+            <!-- 置き換え: 記事見出し（ページ内のメイン見出し） -->
+            <h1 class="text-2xl md:text-3xl font-bold custom-title mb-8 tracking-wide">（記事タイトル）</h1>
+
+            <div class="space-y-10 text-lg font-medium leading-loose opacity-95">
+                <section class="space-y-4">
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">概要</h2>
+                    <p>（この備忘録の目的・前提・適用環境などを書く）</p>
+                </section>
+
+                <section class="space-y-4">
+                    <!-- 見出し番号や見出し名は記事に合わせて編集 -->
+                    <h2 class="text-xl font-bold custom-title mb-2 tracking-wide">1. セクション名</h2>
+                    <p>
+                        本文のなかではコマンド名やファイル名を <code class="code-inline">command</code> のように書く。
+                    </p>
+                    <!-- data-lang と figcaption は表示用タブの色分けに使う。コードの言語は code の language-* と揃える（README） -->
+                    <figure class="code-sample" data-lang="bash">
+                        <figcaption class="code-sample-label">bash</figcaption>
+                        <pre class="code-block"><code class="language-bash">echo hello</code></pre>
+                    </figure>
+                    <p class="text-base opacity-90">（ブロック直下の説明や注意書き）</p>
+                </section>
+            </div>
+        </article>
+    </main>
+
+    <footer class="text-center py-8 opacity-80 font-bold tracking-widest border-t-2" style="border-color: var(--border-color);">
+        <p class="text-sm">&copy; YUSUKE SOEDA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <!-- コードブロックのシンタックスハイライトが不要なら、この2ブロックごと削除 -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script>
+        if (typeof hljs !== 'undefined') {
+            hljs.highlightAll();
+        }
+    </script>
+    <script src="../js/theme.js" defer></script>
+
+</body>
+</html>
