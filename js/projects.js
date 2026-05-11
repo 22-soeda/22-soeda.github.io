@@ -6,12 +6,14 @@
       'custom-card is-hoverable cursor-pointer flex flex-col overflow-hidden block';
 
     const media = document.createElement('div');
-    media.className = 'aspect-[4/3] custom-border-b relative bg-white';
+    media.className =
+      'w-full shrink-0 aspect-[4/3] custom-border-b relative bg-white overflow-hidden';
 
     const imgModern = document.createElement('img');
     imgModern.src = item.thumbModern;
     imgModern.alt = item.title;
-    imgModern.className = 'img-modern w-full h-full object-cover';
+    imgModern.className =
+      'img-modern absolute inset-0 w-full h-full object-cover';
 
     var hasRetro =
       item.thumbRetro && String(item.thumbRetro).trim() !== '';
@@ -24,7 +26,8 @@
       const imgRetro = document.createElement('img');
       imgRetro.src = item.thumbRetro;
       imgRetro.alt = item.title;
-      imgRetro.className = 'img-retro w-full h-full object-cover';
+      imgRetro.className =
+        'img-retro absolute inset-0 w-full h-full object-cover';
       media.appendChild(imgRetro);
     }
 
