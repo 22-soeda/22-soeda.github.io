@@ -6,7 +6,7 @@
 ## 構成
 
 - `index.html` : トップページ
-- `project.html` : プロジェクト詳細（工事中ページ）
+- `projects/project.html` : プロジェクト詳細（工事中ページ）
 - `style.css` : 共通スタイル（モダン/レトロテーマ切り替え）
 
 ## 起動方法（ローカル確認）
@@ -39,14 +39,14 @@ python -m http.server 8000
 
 このサイトは HTML/CSS を直接編集して開発します。
 
-1. `index.html` / `project.html` / `style.css` を編集
+1. `index.html` / `projects/project.html` / `style.css` を編集
 2. ブラウザで再読み込みして確認
 3. レイアウト・配色・リンク動作をチェック
 
 ### 開発時のチェックポイント
 
 - `index.html` のセクション内リンク（`#about`, `#skills`, `#history`, `#projects`）が正しく動くか
-- `project.html` への遷移と `index.html` への戻り導線
+- `projects/project.html` への遷移と `index.html` への戻り導線
 - 右下のテーマ切り替えボタン（モダン/レトロ）動作
 - 画面幅を変えたときの表示崩れ（PC/スマホ）
 - 画像パス（`fig/...`）の表示可否
@@ -64,9 +64,9 @@ python -m http.server 8000
 3. GitHub Pages の反映を待つ（通常数十秒〜数分）
 4. 上記 URL にアクセスして反映を確認
 
-`project.html` は以下で直接確認できます:
+`projects/project.html` は以下で直接確認できます:
 
-- <https://22-soeda.github.io/project.html>
+- <https://22-soeda.github.io/projects/project.html>
 
 ## 補足
 

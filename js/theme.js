@@ -1,4 +1,9 @@
 (function () {
+  function isHomePage() {
+    var p = window.location.pathname;
+    return p === '/' || p === '/index.html' || p.endsWith('/index.html');
+  }
+
   function initVisitorCounterSrc(retroMode) {
     var img = document.getElementById('visitor-counter-img');
     if (!img) return;
@@ -16,6 +21,13 @@
     var btnIcon = document.getElementById('btn-icon');
     var btnText = document.getElementById('btn-text');
     var isRetro;
+
+    // ホーム以外: 常にモダン固定、ボタン非表示
+    if (!isHomePage()) {
+      if (toggleBtn) toggleBtn.style.display = 'none';
+      initVisitorCounterSrc(false);
+      return;
+    }
 
     function updateToggleLabel(retroMode) {
       if (btnIcon) btnIcon.textContent = retroMode ? '✨' : '🎮';

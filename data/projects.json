@@ -1,20 +1,12 @@
 {
   "projects": [
     {
-      "slug": "microscope",
-      "title": "自動化顕微鏡システム",
-      "summary": "YOLOを用いた画像認識技術と組み合わせた、カスタム自動顕微鏡の開発。ハードウェア制御からGUI実装まで構築。",
-      "thumbModern": "fig/home/microscope-modern.jpg",
-      "thumbRetro": "fig/home/microscope-retro.png",
-      "href": "project.html"
-    },
-    {
-      "slug": "xroboocon",
-      "title": "大阪・関西万博「XROBOOCON」チームリーダー",
-      "summary": "大阪・関西万博のロボット競技イベント XROBOOCON においてチームリーダーとして参画。チーム運営と技術方針の統括に従事。",
-      "thumbModern": "fig/home/XROBOCON_all.jpg",
-      "thumbRetro": "fig/home/dot_mechanekko.png",
-      "href": "project.html"
+      "slug": "robot",
+      "title": "二足歩行ロボット大会「ROBO-ONE」への出場",
+      "summary": "二足歩行ロボットの競技大会 ROBO-ONE に出場。メカニズムの設計・製作や競技会場での調整などに取り組む。",
+      "thumbModern": "fig/home/ROBOONE_modern.jpg",
+      "thumbRetro": "fig/home/ROBOONE_retro.png",
+      "href": "projects/project.html"
     },
     {
       "slug": "makaizo-kickscooter",
@@ -22,15 +14,31 @@
       "summary": "「魔改造の夜」にて、キックスケーターを25m綱渡り競技向けに改造し出場。機構・電装の設計と実機調整に取り組む。",
       "thumbModern": "fig/home/makaizo.jpg",
       "thumbRetro": "",
-      "href": "project.html"
+      "href": "projects/project.html"
     },
     {
-      "slug": "robot",
-      "title": "二足歩行ロボット大会「ROBO-ONE」への出場",
-      "summary": "二足歩行ロボットの競技大会 ROBO-ONE に出場。メカニズムの設計・製作や競技会場での調整などに取り組む。",
-      "thumbModern": "fig/home/ROBOONE_modern.jpg",
-      "thumbRetro": "fig/home/ROBOONE_retro.png",
-      "href": "project.html"
+      "slug": "xroboocon",
+      "title": "大阪・関西万博「XROBOOCON」チームリーダー",
+      "summary": "大阪・関西万博のロボット競技イベント XROBOOCON においてチームリーダーとして参画。チーム運営と技術方針の統括に従事。",
+      "thumbModern": "fig/home/XROBOCON_all.jpg",
+      "thumbRetro": "fig/home/dot_mechanekko.png",
+      "href": "projects/project.html"
+    },
+    {
+      "slug": "chokaigi-niko-yonku-2026",
+      "title": "ニコニコ超会議2026「超ニコ四駆」",
+      "summary": "ニコニコ超会議2026 のミニ四駆競技「超ニコ四駆」への参加。車両製作・調整および当日の取り組みを記録する。",
+      "thumbModern": "fig/home/04_award.jpg",
+      "thumbRetro": "",
+      "href": "projects/chokaigi-niko-yonku-2026.html"
+    },
+    {
+      "slug": "hack1-grand-prix-2026",
+      "title": "Hack-1 グランプリ2026",
+      "summary": "電子工作コンテスト Hack-1 のグランプリ大会への参加。回路・筐体・ファームウェアを含む製作と発表をまとめる。",
+      "thumbModern": "fig/home/Hack1-modern.png",
+      "thumbRetro": "fig/home/Hack1-retro.png",
+      "href": "projects/hack1-grand-prix-2026.html"
     },
     {
       "slug": "terrarium",
@@ -38,7 +46,7 @@
       "summary": "コケや微生物、等脚類が循環する自立型テラリウム・アクアリウムの制作。自然環境を模倣した環境構築。",
       "thumbModern": "fig/home/terrarium-modern.jpg",
       "thumbRetro": "fig/home/terrarium-retro.png",
-      "href": "project.html"
+      "href": "projects/project.html"
     }
   ]
 }

@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hack-1 グランプリ2026 - Yusuke Soeda</title>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="../style.css?v=20260511">
+</head>
+<body class="antialiased leading-relaxed min-h-screen flex flex-col">
+
+    <button id="theme-toggle-btn" class="custom-btn fixed bottom-6 right-6 z-50 px-5 py-3 font-bold tracking-wider flex items-center justify-center">
+        <span id="btn-icon">🎮</span>
+    </button>
+
+    <header class="sticky top-0 z-40 custom-header">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+            <div class="font-bold text-xl md:text-2xl tracking-widest">
+                <a href="../index.html" class="hover:opacity-60 transition-opacity">YUSUKE SOEDA</a>
+            </div>
+            <nav class="font-bold text-sm md:text-base">
+                <a href="../index.html#projects" class="hover:opacity-60 transition-opacity flex items-center gap-2">
+                    <span>←</span> PROJECTS へ戻る
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-16 space-y-12">
+
+        <!-- ヒーロー -->
+        <section>
+            <div class="custom-card overflow-hidden">
+                <!-- サムネイル画像（モダン/レトロ切り替え） -->
+                <div class="w-full aspect-video bg-gray-100 flex items-center justify-center overflow-hidden">
+                    <img src="../fig/home/Hack1-modern.png"
+                         alt="Hack-1 グランプリ2026"
+                         class="img-modern w-full h-full object-cover">
+                    <img src="../fig/home/Hack1-retro.png"
+                         alt="Hack-1 グランプリ2026（レトロ）"
+                         class="img-retro w-full h-full object-cover">
+                </div>
+                <div class="p-8 md:p-10">
+                    <p class="text-sm font-bold opacity-70 tracking-widest mb-2">PROJECT</p>
+                    <p class="text-sm font-medium opacity-80 mb-4">
+                        <time datetime="2026-04">2026年4月</time>
+                    </p>
+                    <h1 class="text-2xl md:text-3xl font-bold custom-title mb-6 tracking-wide">
+                        Hack-1 グランプリ2026
+                    </h1>
+                    <p class="text-lg font-medium leading-loose opacity-90">
+                        電子工作コンテスト Hack-1 のグランプリ大会へ参加。
+                        回路・筐体・ファームウェアを一貫して設計・製作し、発表した。
+                    </p>
+                    <div class="flex flex-wrap gap-3 mt-6">
+                        <span class="custom-badge">KiCAD</span>
+                        <span class="custom-badge">Fusion 360</span>
+                        <span class="custom-badge">C / C++</span>
+                        <span class="custom-badge">マイコン制御</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 大会概要 -->
+        <section>
+            <h2 class="text-2xl font-bold custom-title mb-6">大会について</h2>
+            <div class="custom-card p-8 md:p-10 space-y-6 text-lg font-medium leading-loose opacity-95">
+                <p>
+                    <strong class="font-bold">Hack-1 グランプリ</strong>は、電子工作・組み込み開発を対象としたコンテストで、
+                    参加者が独自のテーマのもとで製作物を制作・発表する大会である。（※ダミーテキスト）
+                </p>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <div class="custom-card p-5 space-y-1">
+                        <p class="text-xs font-bold tracking-widest opacity-60">開催日</p>
+                        <p class="font-bold text-base">2026年〇月〇日</p>
+                    </div>
+                    <div class="custom-card p-5 space-y-1">
+                        <p class="text-xs font-bold tracking-widest opacity-60">会場</p>
+                        <p class="font-bold text-base">〇〇会場（東京）</p>
+                    </div>
+                    <div class="custom-card p-5 space-y-1">
+                        <p class="text-xs font-bold tracking-widest opacity-60">テーマ</p>
+                        <p class="font-bold text-base">〇〇〇〇〇〇</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 製作物の紹介 -->
+        <section>
+            <h2 class="text-2xl font-bold custom-title mb-6">製作物の紹介</h2>
+            <div class="custom-card p-8 md:p-10 space-y-8 text-lg font-medium leading-loose opacity-95">
+                <p>
+                    今回製作したのは〇〇〇〇である。△△の問題を解決することを目的として設計した。
+                    全体的な仕様と設計方針を以下にまとめる。（※ダミーテキスト）
+                </p>
+
+                <!-- 製作物メイン写真プレースホルダー -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <figure class="space-y-2">
+                        <div class="w-full aspect-video rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-sm opacity-40"
+                             style="border-color: var(--border-color); background-color: var(--card-bg);">
+                            PHOTO — 完成品 正面
+                        </div>
+                        <figcaption class="text-sm opacity-70 text-center">完成品（正面）</figcaption>
+                    </figure>
+                    <figure class="space-y-2">
+                        <div class="w-full aspect-video rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-sm opacity-40"
+                             style="border-color: var(--border-color); background-color: var(--card-bg);">
+                            PHOTO — 完成品 背面
+                        </div>
+                        <figcaption class="text-sm opacity-70 text-center">完成品（背面）</figcaption>
+                    </figure>
+                </div>
+
+                <h3 class="text-xl font-bold">仕様概要</h3>
+                <ul class="list-disc pl-6 space-y-2 text-base">
+                    <li>マイコン: 〇〇〇〇（例: STM32 / ESP32 など）</li>
+                    <li>センサ: 〇〇〇〇</li>
+                    <li>電源: 〇V、〇〇〇mA</li>
+                    <li>筐体: 3D プリント（PLA）+ アクリル板</li>
+                    <li>通信: 〇〇〇〇（例: BLE / USB シリアル など）</li>
+                </ul>
+
+                <h3 class="text-xl font-bold">回路設計</h3>
+                <p class="text-base opacity-90">
+                    KiCAD を用いて回路設計・基板レイアウトを行った。
+                    〇〇〇〇の点を考慮して配線を工夫した。（※ダミーテキスト）
+                </p>
+                <figure class="space-y-2">
+                    <div class="w-full aspect-video rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-sm opacity-40"
+                         style="border-color: var(--border-color); background-color: var(--card-bg);">
+                        PHOTO — 回路・基板
+                    </div>
+                    <figcaption class="text-sm opacity-70 text-center">KiCAD 回路図（または基板写真）</figcaption>
+                </figure>
+
+                <h3 class="text-xl font-bold">筐体設計</h3>
+                <p class="text-base opacity-90">
+                    Fusion 360 で筐体を設計し、FDM 方式の 3D プリンタで出力した。
+                    〇〇〇〇の点を意識してフォルムを決定した。（※ダミーテキスト）
+                </p>
+                <figure class="space-y-2">
+                    <div class="w-full aspect-video rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-sm opacity-40"
+                         style="border-color: var(--border-color); background-color: var(--card-bg);">
+                        PHOTO — 筐体 / CAD
+                    </div>
+                    <figcaption class="text-sm opacity-70 text-center">筐体 CAD（または印刷後写真）</figcaption>
+                </figure>
+
+                <h3 class="text-xl font-bold">ファームウェア</h3>
+                <p class="text-base opacity-90">
+                    C/C++ で実装した。〇〇〇〇の処理を中心に、〇〇〇の制御ループを構成した。（※ダミーテキスト）
+                </p>
+            </div>
+        </section>
+
+        <!-- 製作過程 -->
+        <section>
+            <h2 class="text-2xl font-bold custom-title mb-6">製作過程</h2>
+            <div class="custom-card p-8 md:p-10 space-y-8 text-lg font-medium leading-loose opacity-95">
+                <p>
+                    大会参加決定から本番まで約〇週間で設計・製作・デバッグを完了した。
+                    以下は主な工程の写真である。（※ダミーテキスト）
+                </p>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4">
+                    <figure class="space-y-2">
+                        <div class="w-full aspect-square rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-xs opacity-40"
+                             style="border-color: var(--border-color); background-color: var(--card-bg);">
+                            PHOTO 01
+                        </div>
+                        <figcaption class="text-xs opacity-70 text-center">初期スケッチ</figcaption>
+                    </figure>
+                    <figure class="space-y-2">
+                        <div class="w-full aspect-square rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-xs opacity-40"
+                             style="border-color: var(--border-color); background-color: var(--card-bg);">
+                            PHOTO 02
+                        </div>
+                        <figcaption class="text-xs opacity-70 text-center">基板実装</figcaption>
+                    </figure>
+                    <figure class="space-y-2">
+                        <div class="w-full aspect-square rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-xs opacity-40"
+                             style="border-color: var(--border-color); background-color: var(--card-bg);">
+                            PHOTO 03
+                        </div>
+                        <figcaption class="text-xs opacity-70 text-center">筐体組み立て</figcaption>
+                    </figure>
+                    <figure class="space-y-2">
+                        <div class="w-full aspect-square rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-xs opacity-40"
+                             style="border-color: var(--border-color); background-color: var(--card-bg);">
+                            PHOTO 04
+                        </div>
+                        <figcaption class="text-xs opacity-70 text-center">デバッグ作業</figcaption>
+                    </figure>
+                    <figure class="space-y-2">
+                        <div class="w-full aspect-square rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-xs opacity-40"
+                             style="border-color: var(--border-color); background-color: var(--card-bg);">
+                            PHOTO 05
+                        </div>
+                        <figcaption class="text-xs opacity-70 text-center">動作確認</figcaption>
+                    </figure>
+                    <figure class="space-y-2">
+                        <div class="w-full aspect-square rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-xs opacity-40"
+                             style="border-color: var(--border-color); background-color: var(--card-bg);">
+                            PHOTO 06
+                        </div>
+                        <figcaption class="text-xs opacity-70 text-center">梱包・搬入</figcaption>
+                    </figure>
+                </div>
+            </div>
+        </section>
+
+        <!-- 発表・結果 -->
+        <section>
+            <h2 class="text-2xl font-bold custom-title mb-6">発表・結果</h2>
+            <div class="custom-card p-8 md:p-10 space-y-8 text-lg font-medium leading-loose opacity-95">
+                <p>
+                    大会当日は〇分間の発表時間で製作物のデモおよびプレゼンテーションを行った。
+                    審査員からは〇〇〇〇という評価をいただいた。（※ダミーテキスト）
+                </p>
+
+                <!-- 発表写真 -->
+                <figure class="space-y-2">
+                    <div class="w-full aspect-video rounded-xl border-2 flex items-center justify-center font-bold tracking-widest text-sm opacity-40"
+                         style="border-color: var(--border-color); background-color: var(--card-bg);">
+                        PHOTO — 発表・会場
+                    </div>
+                    <figcaption class="text-sm opacity-70 text-center">発表の様子</figcaption>
+                </figure>
+
+                <!-- 結果バッジ -->
+                <div class="custom-card p-6 text-center space-y-2">
+                    <p class="text-xs font-bold tracking-widest opacity-60">結果</p>
+                    <p class="text-2xl font-bold tracking-widest">〇〇 賞</p>
+                    <p class="text-base opacity-80">（※ダミーテキスト）</p>
+                </div>
+
+                <h3 class="text-xl font-bold">振り返り</h3>
+                <p class="text-base opacity-90">
+                    今回の製作を通じて〇〇〇〇について学んだ。
+                    特に△△の部分で苦労したが、□□の工夫で解決できた。
+                    次回は〇〇〇〇に挑戦したい。（※ダミーテキスト）
+                </p>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="text-center py-8 opacity-80 font-bold tracking-widest border-t-2" style="border-color: var(--border-color);">
+        <p class="text-sm">&copy; YUSUKE SOEDA. ALL RIGHTS RESERVED.</p>
+    </footer>
+
+    <script src="../js/theme.js" defer></script>
+
+</body>
+</html>
