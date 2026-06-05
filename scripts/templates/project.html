@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{pageTitle}} - Yusuke Soeda</title>
+    <link href="https://fonts.googleapis.com/css2?family=DotGothic16&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+{{hljsHead}}
+    <link rel="stylesheet" href="../style.css?v={{styleVersion}}">
+</head>
+<body class="antialiased leading-relaxed min-h-screen flex flex-col">
+
+    <button id="theme-toggle-btn" class="custom-btn fixed bottom-6 right-6 z-50 px-5 py-3 font-bold tracking-wider flex items-center justify-center">
+        <span id="btn-icon">🎮</span>
+    </button>
+
+    <header class="sticky top-0 z-40 custom-header">
+        <div class="max-w-5xl mx-auto px-6 py-4 flex justify-between items-center gap-4">
+            <div class="font-bold text-xl md:text-2xl tracking-widest">
+                <a href="../index.html" class="hover:opacity-60 transition-opacity">YUSUKE SOEDA</a>
+            </div>
+            <nav class="font-bold text-sm md:text-base">
+                <a href="../index.html#projects" class="hover:opacity-60 transition-opacity flex items-center gap-2">
+                    <span>←</span> PROJECTS へ戻る
+                </a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-5xl w-full mx-auto px-6 py-16">
+        <article class="custom-card overflow-hidden">
+{{heroImages}}
+            <div class="p-8 md:p-10">
+                <p class="text-sm font-bold opacity-70 tracking-widest mb-2">PROJECT</p>
+                <p class="text-sm font-medium opacity-80 mb-5">実施時期: <time datetime="{{dateIso}}">{{dateDisplay}}</time></p>
+                <h1 class="text-2xl md:text-3xl font-bold custom-title mb-4 tracking-wide">{{heroTitle}}</h1>
+                <p class="text-lg font-medium leading-loose opacity-90 mb-6">{{summary}}</p>
+                <div class="flex flex-wrap gap-3 mb-8">
+{{badges}}
+                </div>
+
+                <div class="space-y-10 text-lg font-medium leading-loose opacity-95">
+{{body}}
+                </div>
+            </div>
+        </article>
+    </main>
+
+    <footer class="text-center py-8 opacity-80 font-bold tracking-widest border-t-2" style="border-color: var(--border-color);">
+        <p class="text-sm">&copy; YUSUKE SOEDA. ALL RIGHTS RESERVED.</p>
+    </footer>
+{{hljsScripts}}
+    <script src="../js/theme.js" defer></script>
+
+</body>
+</html>

@@ -1,0 +1,16 @@
+{
+  "name": "22-soeda.github.io",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:memos": "node scripts/build-memos.mjs",
+    "build:memo": "node scripts/build-memos.mjs",
+    "build:projects": "node scripts/build-projects.mjs",
+    "build:project": "node scripts/build-projects.mjs",
+    "build:content": "node scripts/build-memos.mjs && node scripts/build-projects.mjs"
+  },
+  "devDependencies": {
+    "gray-matter": "^4.0.3",
+    "marked": "^15.0.7"
+  }
+}
