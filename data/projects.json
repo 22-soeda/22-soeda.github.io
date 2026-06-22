@@ -41,6 +41,14 @@
       "href": "projects/hack1-grand-prix-2026.html"
     },
     {
+      "slug": "terackthon-10th",
+      "title": "TERACKTHON 10TH",
+      "summary": "ハッカソンイベント「TERACKTHON」第10回への参加記録。",
+      "thumbModern": "fig/home/Terakkathon_modern.png",
+      "thumbRetro": "fig/home/Terakkathon_retro.png",
+      "href": "projects/terackthon-10th.html"
+    },
+    {
       "slug": "terrarium",
       "title": "Bioactive Terrarium",
       "summary": "コケや微生物、等脚類が循環する自立型テラリウム・アクアリウムの制作。自然環境を模倣した環境構築。",
