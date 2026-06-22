@@ -1,0 +1,6 @@
+exclude:
+  - content/
+  - scripts/
+  - node_modules/
+  - package.json
+  - package-lock.json
